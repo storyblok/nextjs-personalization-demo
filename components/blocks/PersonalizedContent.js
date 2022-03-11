@@ -1,5 +1,4 @@
-import DynamicComponent from "../core/DynamicComponent";
-import { storyblokEditable } from "@storyblok/js";
+import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import { useUserType } from "utils/hooks";
 
 const PersonalizedContent = ({ blok }) => {
@@ -10,7 +9,7 @@ const PersonalizedContent = ({ blok }) => {
     <div {...storyblokEditable(blok)} className="">
       {variant &&
         variant.content.map((nestedBlok) => (
-          <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+          <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
         ))}
     </div>
   );

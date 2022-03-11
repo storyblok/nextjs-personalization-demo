@@ -1,5 +1,4 @@
-import DynamicComponent from "components/core/DynamicComponent";
-import { storyblokEditable } from "@storyblok/js";
+import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import { useStory } from "utils/hooks";
 
 const Page = ({ blok }) => {
@@ -11,7 +10,7 @@ const Page = ({ blok }) => {
       <div>
         {blok.body
           ? blok.body.map((nestedBlok) => (
-              <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
             ))
           : null}
       </div>

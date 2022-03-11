@@ -1,4 +1,4 @@
-import storyblokApi, { resolve_relations_fields } from "utils/storyblok/client";
+import { useStoryblokApi } from "@storyblok/react";
 import sources from "utils/data/path-data-mapping";
 import fs from "fs";
 
@@ -6,16 +6,19 @@ class StoryblokService {
   constructor() {
     this.version =
       process.env.VERCEL_ENV !== "production" ? "draft" : "published";
+    this.storyblokApi = useStoryblokApi();
   }
 
   async getPaths() {
-    const stories = await storyblokApi.getAll("cdn/links", {
+    const stories = await this.storyblokApi.getAll("cdn/links", {
       version: this.version,
     });
-    const personalized_stories = await storyblokApi.getAll("cdn/stories", {
+
+    const personalized_stories = await this.storyblokApi.getAll("cdn/stories", {
       version: this.version,
       search_term: "personalized_content",
     });
+
     const stories_out = [];
     let personalized_stories_out = {};
 
@@ -61,8 +64,7 @@ class StoryblokService {
   async getStory(slug) {
     slug = slug === "/" || slug === "" ? "home/" : slug.replace(/^\//, "");
     slug = slug.replace(/^\//, "");
-    let res = await storyblokApi.get(`cdn/stories/${slug}`, {
-      resolve_relations: resolve_relations_fields.join(","),
+    let res = await this.storyblokApi.get(`cdn/stories/${slug}`, {
       version: this.version,
       resolve_links: "url",
     });
@@ -70,8 +72,8 @@ class StoryblokService {
   }
 
   async getStories(endpoint, parameters) {
-    storyblokApi.flushCache();
-    return await storyblokApi.getAll(endpoint, {
+    this.storyblokApi.flushCache();
+    return await this.storyblokApi.getAll(endpoint, {
       ...parameters,
       version: this.version,
     });

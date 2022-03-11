@@ -3,6 +3,7 @@ import storyblokService from "utils/storyblok/service";
 export async function getStaticProps({ params }) {
   try {
     let slug = params.slug?.join("/") || "/";
+
     if (typeof (params.slug === "string") && slug != "/") {
       slug = `/${slug}`;
     }

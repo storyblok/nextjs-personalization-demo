@@ -9,14 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@storyblok/js": "^1.0.3",
-    "axios": "^0.26.0",
+    "@storyblok/react": "^1.0.0",
     "next": "^12.0.8",
-    "node-fetch": "^3.2.0",
-    "postcss-preset-env": "^7.2.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-html-parser": "^2.0.2",
     "storyblok-rich-text-react-renderer": "^2.5.2"
   },
   "devDependencies": {
@@ -24,6 +20,7 @@
     "eslint": "7.32.0",
     "eslint-config-next": "^12.0.4",
     "postcss": "^8.4.5",
+    "postcss-preset-env": "^7.2.3",
     "tailwindcss": "^3.0.15"
   }
 }

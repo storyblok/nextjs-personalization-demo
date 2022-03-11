@@ -1,20 +1,22 @@
-import Layout from 'components/core/Layout'
-import DynamicComponent from 'components/core/DynamicComponent'
-import useStoryblok from 'utils/storyblok/bridge'
-import { useRouter } from 'next/router'
+import Layout from "components/core/Layout";
+import { useStoryblokState, StoryblokComponent } from "@storyblok/react";
 
 export default function Page({ story }) {
-  const storyData = story ? useStoryblok(story) : null
-  const router = useRouter()
+  console.log("before " + story?.name);
+
+  const storyData = story ? useStoryblokState(story) : null;
+
+  console.log("after " + storyData?.name);
+
+  if (!storyData?.content) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <>
-    {!router.isFallback && storyData && <Layout>
-      <DynamicComponent blok={storyData.content} />
-    </Layout>}
-    {router.isFallback && <p>Loading...</p>}
-    </>
-  )
+    <Layout>
+      <StoryblokComponent blok={storyData.content} />
+    </Layout>
+  );
 }
 
-export { getStaticProps, getStaticPaths } from 'utils/data/get-static-data'
+export { getStaticProps, getStaticPaths } from "utils/data/get-static-data";

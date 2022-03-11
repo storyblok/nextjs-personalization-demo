@@ -1,5 +1,5 @@
 import React from "react";
-import { storyblokEditable } from "@storyblok/js";
+import { storyblokEditable } from "@storyblok/react";
 import { useProducts } from "utils/hooks";
 
 const Catalog = ({ blok }) => {
