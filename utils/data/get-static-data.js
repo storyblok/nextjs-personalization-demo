@@ -18,6 +18,7 @@ export async function getStaticProps({ params }) {
 
     let props = {
       story,
+      key: story?.id,
       settings: {},
       user_type,
       ...path_data,

@@ -2,13 +2,9 @@ import Layout from "components/core/Layout";
 import { useStoryblokState, StoryblokComponent } from "@storyblok/react";
 
 export default function Page({ story }) {
-  console.log("before " + story?.name);
-
   const storyData = story ? useStoryblokState(story) : null;
 
-  console.log("after " + storyData?.name);
-
-  if (!storyData?.content) {
+  if (!storyData) {
     return <div>Loading...</div>;
   }
 

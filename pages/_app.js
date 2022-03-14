@@ -21,7 +21,7 @@ const components = {
 storyblokInit({
   accessToken: "AK2gOnJ2NjAyx1nhomncXwtt",
   use: [apiPlugin],
-  components: components,
+  components,
 });
 
 function MyApp({ Component, pageProps }) {
