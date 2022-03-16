@@ -1,4 +1,4 @@
-import { useStoryblokApi } from "@storyblok/react";
+import { getStoryblokApi } from "@storyblok/react";
 import sources from "utils/data/path-data-mapping";
 import fs from "fs";
 
@@ -6,7 +6,7 @@ class StoryblokService {
   constructor() {
     this.version =
       process.env.VERCEL_ENV !== "production" ? "draft" : "published";
-    this.storyblokApi = useStoryblokApi();
+    this.storyblokApi = getStoryblokApi();
   }
 
   async getPaths() {
