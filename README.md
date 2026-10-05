@@ -1,3 +1,7 @@
+> [!WARNING]
+> This repository is no longer maintained.
+> For a current Next.js + Storyblok starter, use [blueprint-core-nextjs](https://github.com/storyblok/blueprint-core-nextjs).
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
